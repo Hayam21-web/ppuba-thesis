@@ -1,0 +1,9 @@
+control,implementation,evidence,auditability,coverage,effectiveness
+Fixed random seeds and versioned pipeline,,,,,
+"Identity-aware, leakage-safe split",,,,,
+Differential privacy (DP-SGD-style),,,,,
+PII masking / pseudonymous user IDs,,,,,
+Federated learning (FedAvg),,,,,
+SHAP explainability audit trail,,,,,
+Membership-inference / re-identification audit,,,,,
+k-anonymity / l-diversity quantification,,,,,

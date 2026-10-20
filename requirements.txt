@@ -1,0 +1,11 @@
+# Pinned versions used for every value reported in the thesis (Table 4.4).
+# Other versions run, but the Random Forest values change slightly (e.g. scikit-learn 1.9.1: ROC-AUC 0.549 instead of 0.555).
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+scipy==1.17.1
+shap==0.53.0
+matplotlib==3.10.8
+seaborn==0.13.2
+openpyxl==3.1.5
+tabulate==0.10.0

@@ -1,0 +1,179 @@
+{
+ "rule": "smallest scale with median primary-feature univariate AUC >= 0.9",
+ "target_auc": 0.9,
+ "calibration_seeds": [
+  1001,
+  1002,
+  1003,
+  1004,
+  1005,
+  1006,
+  1007,
+  1008
+ ],
+ "grid": [
+  {
+   "scale": 1.0,
+   "median_primary_auc": 0.9136601495726495,
+   "min_primary_auc": 0.7700406311637081,
+   "n_archetypes_observed": 15,
+   "per_archetype": {
+    "credential_theft": 0.9120726495726497,
+    "brute_force_then_access": 0.9653907203907205,
+    "data_exfil_usb": 0.8489883344883346,
+    "data_exfil_email": 0.9136601495726495,
+    "cloud_upload": 0.9602729344729344,
+    "privilege_escalation": 0.9558910256410256,
+    "post_termination_access": 0.8960586528659924,
+    "sabotage": 0.7700406311637081,
+    "print_exfiltration": 0.9228886086591005,
+    "mass_download": 0.9382367046533714,
+    "slow_exfil_mixed": 0.9208071225071225,
+    "night_access_sensitive": 0.9418992673992674,
+    "shared_credential_abuse": 0.9001622391622393,
+    "insider_recon": 0.8290914987789988,
+    "external_leak_burst": 0.9013971845148315
+   }
+  },
+  {
+   "scale": 1.5,
+   "median_primary_auc": 0.9600924145299146,
+   "min_primary_auc": 0.8470573307034845,
+   "n_archetypes_observed": 15,
+   "per_archetype": {
+    "credential_theft": 0.9773148148148149,
+    "brute_force_then_access": 0.9793068783068783,
+    "data_exfil_usb": 0.929005313005313,
+    "data_exfil_email": 0.9600924145299146,
+    "cloud_upload": 0.9876997150997151,
+    "privilege_escalation": 0.974670584045584,
+    "post_termination_access": 0.9242263781071121,
+    "sabotage": 0.8470573307034845,
+    "print_exfiltration": 0.9496909065433655,
+    "mass_download": 0.9713444919278253,
+    "slow_exfil_mixed": 0.9843487179487179,
+    "night_access_sensitive": 0.9521283068783069,
+    "shared_credential_abuse": 0.9672822822822823,
+    "insider_recon": 0.895753205128205,
+    "external_leak_burst": 0.9471359141947376
+   }
+  },
+  {
+   "scale": 2.0,
+   "median_primary_auc": 0.9788853860165335,
+   "min_primary_auc": 0.898358711374096,
+   "n_archetypes_observed": 15,
+   "per_archetype": {
+    "credential_theft": 0.9876820512820513,
+    "brute_force_then_access": 0.9982482702482701,
+    "data_exfil_usb": 0.9730256410256409,
+    "data_exfil_email": 0.9782623931623933,
+    "cloud_upload": 0.9977943019943019,
+    "privilege_escalation": 0.9895689992877493,
+    "post_termination_access": 0.967643534854544,
+    "sabotage": 0.898358711374096,
+    "print_exfiltration": 0.9788853860165335,
+    "mass_download": 0.9910574548907882,
+    "slow_exfil_mixed": 0.9833797720797721,
+    "night_access_sensitive": 0.9715756003256002,
+    "shared_credential_abuse": 0.9912269192269193,
+    "insider_recon": 0.94369826007326,
+    "external_leak_burst": 0.9610125691302162
+   }
+  },
+  {
+   "scale": 2.5,
+   "median_primary_auc": 0.992368642286675,
+   "min_primary_auc": 0.9299246548323471,
+   "n_archetypes_observed": 15,
+   "per_archetype": {
+    "credential_theft": 0.9982253561253561,
+    "brute_force_then_access": 0.9983019943019943,
+    "data_exfil_usb": 0.9681759066759067,
+    "data_exfil_email": 0.9846532051282051,
+    "cloud_upload": 0.997518138651472,
+    "privilege_escalation": 0.994841079059829,
+    "post_termination_access": 0.9814969811024855,
+    "sabotage": 0.9299246548323471,
+    "print_exfiltration": 0.992368642286675,
+    "mass_download": 0.9972172364672365,
+    "slow_exfil_mixed": 0.9971789173789174,
+    "night_access_sensitive": 0.9878692511192511,
+    "shared_credential_abuse": 0.9953454993454993,
+    "insider_recon": 0.971320054945055,
+    "external_leak_burst": 0.9872825540472598
+   }
+  },
+  {
+   "scale": 3.0,
+   "median_primary_auc": 0.9955410025410025,
+   "min_primary_auc": 0.9568439184746877,
+   "n_archetypes_observed": 15,
+   "per_archetype": {
+    "credential_theft": 0.9787586894586895,
+    "brute_force_then_access": 0.9999820919820919,
+    "data_exfil_usb": 0.9768583968583968,
+    "data_exfil_email": 0.993663141025641,
+    "cloud_upload": 0.9990966761633427,
+    "privilege_escalation": 0.9972934472934473,
+    "post_termination_access": 0.9968145534384067,
+    "sabotage": 0.9568439184746877,
+    "print_exfiltration": 0.9963274485077762,
+    "mass_download": 0.9993727445394112,
+    "slow_exfil_mixed": 0.999897150997151,
+    "night_access_sensitive": 0.9953110500610498,
+    "shared_credential_abuse": 0.9955410025410025,
+    "insider_recon": 0.9832490842490841,
+    "external_leak_burst": 0.9934776269482152
+   }
+  },
+  {
+   "scale": 4.0,
+   "median_primary_auc": 0.9995944240944241,
+   "min_primary_auc": 0.9827583168967784,
+   "n_archetypes_observed": 15,
+   "per_archetype": {
+    "credential_theft": 0.9999612535612535,
+    "brute_force_then_access": 0.999999592999593,
+    "data_exfil_usb": 0.9964652344652344,
+    "data_exfil_email": 0.9980372863247864,
+    "cloud_upload": 0.9999892687559354,
+    "privilege_escalation": 0.9999570868945868,
+    "post_termination_access": 0.9992264565200345,
+    "sabotage": 0.9827583168967784,
+    "print_exfiltration": 0.9994386997337817,
+    "mass_download": 0.9999978632478632,
+    "slow_exfil_mixed": 0.9999418803418804,
+    "night_access_sensitive": 0.9995944240944241,
+    "shared_credential_abuse": 0.9997757757757757,
+    "insider_recon": 0.9964701617826617,
+    "external_leak_burst": 0.9953464052287582
+   }
+  },
+  {
+   "scale": 5.0,
+   "median_primary_auc": 0.9999271402550092,
+   "min_primary_auc": 0.9930813938198554,
+   "n_archetypes_observed": 15,
+   "per_archetype": {
+    "credential_theft": 0.9999988603988604,
+    "brute_force_then_access": 1.0,
+    "data_exfil_usb": 0.9973957033957033,
+    "data_exfil_email": 0.999442094017094,
+    "cloud_upload": 0.9999887939221271,
+    "privilege_escalation": 0.9999924323361823,
+    "post_termination_access": 0.9998771269505214,
+    "sabotage": 0.9930813938198554,
+    "print_exfiltration": 0.9999271402550092,
+    "mass_download": 1.0,
+    "slow_exfil_mixed": 0.999960113960114,
+    "night_access_sensitive": 0.9999425111925111,
+    "shared_credential_abuse": 0.9998361438361437,
+    "insider_recon": 0.9993875152625152,
+    "external_leak_burst": 0.9989105077928607
+   }
+  }
+ ],
+ "chosen_intensity_scale": 1.0,
+ "target_met": true
+}
