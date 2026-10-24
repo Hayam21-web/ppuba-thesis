@@ -1,0 +1,59 @@
+{
+ "C1_clipped_mean": {
+  "minibatches": 20,
+  "max_abs_difference": 1.0131716754457898e-07,
+  "max_relative_difference": 2.221402284637145e-07,
+  "passed": true,
+  "note": "residual differences come from Opacus' clip factor C/(||g||+1e-6) versus C/||g||"
+ },
+ "C2_noise_sd": {
+  "0.5": {
+   "sigma": 1037.4156442608735,
+   "noise_sd_pipeline": 12.15721458118211,
+   "noise_sd_opacus": 12.160453472307571,
+   "relative_difference": 0.0002664172046839135,
+   "passed": true
+  },
+  "1.0": {
+   "sigma": 542.9702309525944,
+   "noise_sd_pipeline": 6.362932393975716,
+   "noise_sd_opacus": 6.3646275886377115,
+   "relative_difference": 0.0002664172046838984,
+   "passed": true
+  },
+  "2.0": {
+   "sigma": 283.28241400762414,
+   "noise_sd_pipeline": 3.3197157891518456,
+   "noise_sd_opacus": 3.320600218552736,
+   "relative_difference": 0.00026641720468379923,
+   "passed": true
+  },
+  "5.0": {
+   "sigma": 119.38164037660269,
+   "noise_sd_pipeline": 1.3990035981633127,
+   "noise_sd_opacus": 1.399376316791278,
+   "relative_difference": 0.0002664172046839058,
+   "passed": true
+  },
+  "10.0": {
+   "sigma": 61.942157018881176,
+   "noise_sd_pipeline": 0.7258846525650138,
+   "noise_sd_opacus": 0.7260780407250731,
+   "relative_difference": 0.0002664172046839011,
+   "passed": true
+  },
+  "20.0": {
+   "sigma": 32.0924689332203,
+   "noise_sd_pipeline": 0.3760836203111754,
+   "noise_sd_opacus": 0.37618381545802615,
+   "relative_difference": 0.0002664172046839501,
+   "passed": true
+  }
+ },
+ "versions": {
+  "torch": "2.5.1+cu124",
+  "opacus": "1.5.2",
+  "numpy": "1.26.4"
+ },
+ "all_passed": true
+}

@@ -1,0 +1,78 @@
+{
+ "results": [
+  {
+   "config": "one step calibrated to eps=0.5",
+   "sigma": 7.031826675582501,
+   "delta_step": 1e-05,
+   "trials_per_dataset": 200000,
+   "observed_mean_shift_in_C_over_B": 2.0013530793816177,
+   "observed_noise_sd_in_C_over_B": 7.036037898043067,
+   "theoretical_eps_add_remove": 0.5,
+   "theoretical_eps_replace_one": 1.0672990993824323,
+   "empirical_eps_lower_bound": 0.5780583077553559,
+   "consistent": true
+  },
+  {
+   "config": "one step calibrated to eps=1",
+   "sigma": 3.7306316348159405,
+   "delta_step": 1e-05,
+   "trials_per_dataset": 200000,
+   "observed_mean_shift_in_C_over_B": 1.9902246022488574,
+   "observed_noise_sd_in_C_over_B": 3.7234348629421063,
+   "theoretical_eps_add_remove": 1.0,
+   "theoretical_eps_replace_one": 2.154676657667699,
+   "empirical_eps_lower_bound": 1.336216772824174,
+   "consistent": true
+  },
+  {
+   "config": "one step calibrated to eps=2",
+   "sigma": 1.9938124456435362,
+   "delta_step": 1e-05,
+   "trials_per_dataset": 200000,
+   "observed_mean_shift_in_C_over_B": 2.0013717216931735,
+   "observed_noise_sd_in_C_over_B": 1.9954203754568338,
+   "theoretical_eps_add_remove": 2.0,
+   "theoretical_eps_replace_one": 4.392910874934975,
+   "empirical_eps_lower_bound": 3.034060894052913,
+   "consistent": true
+  },
+  {
+   "config": "one step calibrated to eps=4",
+   "sigma": 1.0811618495202389,
+   "delta_step": 1e-05,
+   "trials_per_dataset": 200000,
+   "observed_mean_shift_in_C_over_B": 1.9981725281571114,
+   "observed_noise_sd_in_C_over_B": 1.0824074311181267,
+   "theoretical_eps_add_remove": 4.0,
+   "theoretical_eps_replace_one": 9.084731302995571,
+   "empirical_eps_lower_bound": 4.952909091317183,
+   "consistent": true
+  },
+  {
+   "config": "thesis step (nominal eps=20)",
+   "sigma": 32.0924689332203,
+   "delta_step": 6.666666666666667e-08,
+   "trials_per_dataset": 500000,
+   "observed_mean_shift_in_C_over_B": 1.9853854229397718,
+   "observed_noise_sd_in_C_over_B": 32.08918468184683,
+   "theoretical_eps_add_remove": 0.13333333333333333,
+   "theoretical_eps_replace_one": 0.27666782319535516,
+   "empirical_eps_lower_bound": 0.08510264295913403,
+   "consistent": true
+  },
+  {
+   "config": "thesis step (nominal eps=5)",
+   "sigma": 119.38164037660269,
+   "delta_step": 6.666666666666667e-08,
+   "trials_per_dataset": 500000,
+   "observed_mean_shift_in_C_over_B": 2.651817221778693,
+   "observed_noise_sd_in_C_over_B": 119.45660136187975,
+   "theoretical_eps_add_remove": 0.03333333333333333,
+   "theoretical_eps_replace_one": 0.06932214117198231,
+   "empirical_eps_lower_bound": 0.02454229020644018,
+   "consistent": true
+  }
+ ],
+ "all_consistent": true,
+ "note": "Empirical lower bounds; consistency means no implementation leak was detected. Not a formal proof."
+}

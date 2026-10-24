@@ -1,0 +1,15 @@
+ADFA-LD.zip sha256: 58d625470749344843a7f730b0875ce9b8769f6fa48f18dc4a92bd07c342ead5
+final_project_dataset.pkl sha256: da4440bbae952d8acfa569cb786289737bb8a0ef27d333bd13275fe8fb4d6ed8
+[10] ADFA-LD: 5951 traces, 746 attacks, 60 attack runs
+[10] ADFA seed 42: Isolation Forest 0.264, Random Forest 0.787, Deep Autoencoder 0.385, Centralized LR 0.560 | FL eps=inf 0.488, eps=5 0.392
+[10] ADFA seed 43: Isolation Forest 0.324, Random Forest 0.795, Deep Autoencoder 0.377, Centralized LR 0.606 | FL eps=inf 0.482, eps=5 0.384
+[10] ADFA seed 44: Isolation Forest 0.263, Random Forest 0.794, Deep Autoencoder 0.380, Centralized LR 0.511 | FL eps=inf 0.481, eps=5 0.384
+[10] ADFA seed 45: Isolation Forest 0.296, Random Forest 0.814, Deep Autoencoder 0.420, Centralized LR 0.559 | FL eps=inf 0.452, eps=5 0.397
+[10] ADFA seed 46: Isolation Forest 0.258, Random Forest 0.743, Deep Autoencoder 0.349, Centralized LR 0.519 | FL eps=inf 0.487, eps=5 0.433
+[10] Enron: 144 persons, 18 POI
+[10] Enron seed 42: Isolation Forest 0.000, Random Forest 0.000, Deep Autoencoder 0.364, Centralized LR 0.348
+[10] Enron seed 43: Isolation Forest 0.154, Random Forest 0.571, Deep Autoencoder 0.154, Centralized LR 0.500
+[10] Enron seed 44: Isolation Forest 0.111, Random Forest 0.000, Deep Autoencoder 0.143, Centralized LR 0.222
+[10] Enron seed 45: Isolation Forest 0.333, Random Forest 0.000, Deep Autoencoder 0.222, Centralized LR 0.250
+[10] Enron seed 46: Isolation Forest 0.190, Random Forest 0.000, Deep Autoencoder 0.200, Centralized LR 0.429
+[10] wrote outputs/tables/EXT_detection_performance.csv, EXT_adfa_privacy_utility.csv, EXT_adfa_mia_centralized.csv, EXT_partitions.csv

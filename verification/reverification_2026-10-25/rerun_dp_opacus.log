@@ -1,0 +1,8 @@
+C1 clipped mean: max abs diff 1.01e-07, max rel diff 2.22e-07 -> PASS
+C2 eps= 0.5: sigma=1037.4 SD pipeline 12.1572  SD Opacus 12.1605  rel diff +0.03% -> PASS
+C2 eps= 1.0: sigma=543.0 SD pipeline 6.3629  SD Opacus 6.3646  rel diff +0.03% -> PASS
+C2 eps= 2.0: sigma=283.3 SD pipeline 3.3197  SD Opacus 3.3206  rel diff +0.03% -> PASS
+C2 eps= 5.0: sigma=119.4 SD pipeline 1.3990  SD Opacus 1.3994  rel diff +0.03% -> PASS
+C2 eps=10.0: sigma=61.9 SD pipeline 0.7259  SD Opacus 0.7261  rel diff +0.03% -> PASS
+C2 eps=20.0: sigma=32.1 SD pipeline 0.3761  SD Opacus 0.3762  rel diff +0.03% -> PASS
+ALL PASSED

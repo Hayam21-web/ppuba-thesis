@@ -172,6 +172,30 @@ chk("Sec 5.6", "seeds with non-private F1 = 0", sum(int(F[s]["metrics"]["inf"]["
 dd = [B[s]["Deep Autoencoder"]["f1"] - B[s]["Isolation Forest"]["f1"] for s in seeds]
 chk("Sec 5.6", "DAE > IF in n seeds", sum(x > 0 for x in dd), 4, 0); chk("Sec 5.6", "DAE - IF mean paired diff", mean(dd), 0.084)
 
+# ---------------- External validation (Section 5.6, Tables 5.5 and 5.6; script 10), if run
+pe = os.path.join(C.TAB_DIR, "EXT_detection_performance.csv")
+if os.path.exists(pe):
+    ex = T("EXT_detection_performance"); ex["key"] = ex.Dataset + ": " + ex.Model; ex = ex.set_index("key")
+    for k, col, v in (("ADFA-LD: Random Forest", "F1", 0.787), ("ADFA-LD: Random Forest", "ROC-AUC", 0.979), ("ADFA-LD: Centralized LR", "F1", 0.551),
+                      ("ADFA-LD: FedAvg non-private (eps = inf)", "F1", 0.478), ("ADFA-LD: FedAvg non-private (eps = inf)", "ROC-AUC", 0.871),
+                      ("ADFA-LD: Deep Autoencoder", "F1", 0.382), ("ADFA-LD: Isolation Forest", "F1", 0.281), ("ADFA-LD: FL + DP (eps = 5)", "F1", 0.398),
+                      ("Enron POI: Centralized LR", "F1", 0.350), ("Enron POI: Centralized LR", "ROC-AUC", 0.821), ("Enron POI: Random Forest", "F1", 0.114),
+                      ("Enron POI: Random Forest", "ROC-AUC", 0.713), ("Enron POI: Isolation Forest", "ROC-AUC", 0.515), ("Enron POI: Deep Autoencoder", "ROC-AUC", 0.526)):
+        chk("Table 5.5", f"{k} {col}", first(ex.loc[k, col]), v)
+    ep = T("EXT_adfa_privacy_utility", dtype={"epsilon": str}).set_index("epsilon")
+    for e_, v in (("0.5", 0.303), ("1.0", 0.370), ("2.0", 0.359), ("5.0", 0.398), ("10.0", 0.461), ("20.0", 0.470), ("inf", 0.478)):
+        chk("Table 5.6", f"ADFA FL F1 eps={e_}", first(ep.loc[e_, "F1"]), v)
+    chk("Table 5.6", "ADFA ROC-AUC eps=0.5", first(ep.loc["0.5", "ROC-AUC"]), 0.506)
+    chk("Table 5.6", "retention eps=0.5 (%)", ep.loc["0.5", "F1 retention vs eps=inf (%)"], 63.3, 1)
+    chk("Table 5.6", "retention eps=5 (%)", ep.loc["5.0", "F1 retention vs eps=inf (%)"], 83.3, 1)
+    mi = [first(x) for x in ep["MIA AUC"]]; chk("Sec 5.6", "ADFA FL MIA min", min(mi), 0.498); chk("Sec 5.6", "ADFA FL MIA max", max(mi), 0.507)
+    mc = T("EXT_adfa_mia_centralized").set_index("model"); chk("Sec 5.6", "ADFA RF MIA", first(mc.loc["Random Forest", "MIA AUC"]), 0.543)
+    pa = T("EXT_partitions"); ad = pa[pa.dataset == "ADFA-LD"]
+    chk("Sec 5.6", "ADFA test records mean", ad[ad.partition == "test"].records.mean(), 1490, 0)
+    chk("Sec 5.6", "ADFA train attacks mean", ad[ad.partition == "train"].positives.mean(), 445, 0)
+    tt = ad[ad.partition == "test"]; chk("Sec 5.6", "ADFA test attack rate (%)", 100 * (tt.positives / tt.records).mean(), 12.7, 1)
+    en = pa[(pa.dataset == "Enron POI") & (pa.partition == "test")]; chk("Sec 5.6", "Enron POI per test partition", en.positives.mean(), 4, 0)
+
 bad = [x for x in res if not x[0]]
 for ok, where, item, got, exp in res: print(f"{'PASS' if ok else 'FAIL'}  [{where}] {item}: pipeline {got}  thesis {exp}")
 print(f"\n{len(res) - len(bad)}/{len(res)} additional text values match the thesis.")
