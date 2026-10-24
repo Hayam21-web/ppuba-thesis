@@ -13,6 +13,8 @@ python 08_generator_sensitivity.py --seeds 42 43 44 --scales 1 3   # Appendix C:
 python verify_thesis_values.py           # compares outputs/ with the values printed in Chapter 5 and Appendix C
 pip install -r verification/requirements.txt
 python verification/dp_accounting_check.py                         # Table D.2: independent DP-accounting check
+python verification/dp_implementation_check.py                     # Table D.3: tests of the DP code in ppuba_lib/fl.py
+python verification/verify_extended_values.py                      # checks the 150 values quoted in the thesis text
 ```
 
 Delete `data/` and `outputs/` before a clean re-run. Everything is seeded; with the pinned versions the same seeds give
@@ -45,6 +47,9 @@ the same numbers. Newer library versions run, but Random Forest values change sl
 | 09 | governance weight sensitivity (Table 5.4) and per-seed F1 with paired differences (Table C.2) |
 | `verify_thesis_values.py` | automatic comparison of the outputs with the thesis values |
 | `verification/dp_accounting_check.py` | independent check of the DP accounting (Table D.2), not part of the pipeline |
+| `verification/dp_implementation_check.py` | 27 software tests of the DP implementation against Table 3.4 (Table D.3); lists the operations outside the DP mechanism; not a formal audit |
+| `verification/verify_extended_values.py` | comparison of the outputs with the 150 further values quoted in the running text (Chapters 1, 3-7, Appendices B-C) |
+| `verification/reverification_2026-10-24/` | logs and comparison report of the independent clean re-run from release v1.0-thesis (Table D.4) |
 
 ## 4. Thesis item -> raw output (Table D.1)
 
@@ -63,7 +68,10 @@ the same numbers. Newer library versions run, but Random Forest values change sl
 | Table C.1 | `tables/TC_1_partition_summary.csv` |
 | Table C.2 | `tables/TC_2_per_seed_f1_paired.csv` |
 | Appendix C intensity sensitivity | `tables/SENS_intensity_summary.csv`, `tables/SENS_intensity_all_runs.csv` |
+| Table C.3 (k-anonymity: user level and record level) | `per_seed/split_seed_*.json`, `tables/T5_3_3_kanonymity_ldiversity.csv` |
 | Table D.2 | `verification/dpcheck.json` |
+| Table D.3 | `verification/dp_implementation_check.json` |
+| Table D.4 | `verification/reverification_2026-10-24/COMPARISON_REPORT.md` |
 | Everything in one workbook | `ALL_RESULTS.xlsx` |
 
 ## 5. Notes
@@ -72,19 +80,33 @@ the same numbers. Newer library versions run, but Random Forest values change sl
    local step and composed by basic sequential composition; no subsampling amplification is claimed. The class weight
    multiplies the per-example gradient *before* clipping (`ppuba_lib/fl.py`), so the averaged clipped gradient has
    sensitivity C/B. Reported epsilons are nominal budgets; `verification/dp_accounting_check.py` shows they are
-   conservative upper bounds for this mechanism. The code has not been formally audited.
+   conservative upper bounds for this mechanism. `verification/dp_implementation_check.py` tests the code against this
+   specification (27/27 tests pass). The code has been tested but NOT formally verified or externally audited.
+   Protection is record-level (one user-day); a user has ~150 records, so user-level protection is much weaker.
+   Outside the DP mechanism: StandardScaler statistics, pseudonymization/split/client assignment/anonymity statistics,
+   label-stratified batch construction (covered only by the replace-one sensitivity 2C/B), FedAvg weights based on
+   client record counts, the training-loss curve, validation-based thresholds, and the seeded (reproducible) noise
+   generator. A deployment must draw the noise from a secret, cryptographically secure source.
 2. **Governance rubric.** `governance_rubric_input.csv` is intentionally empty (per-criterion scores were not recorded),
    so script 06 uses the researcher-assigned control totals in `config.GOVERNANCE_TOTALS` and script 09 bounds the weight
    sensitivity (Section 4.4.4).
 3. **Corpus.** The corpus is a CERT-inspired synthetic corpus produced by `ppuba_lib/data.py`; it is not the CERT v6.2 archive.
 4. PR-AUC is computed as average precision (`sklearn.metrics.average_precision_score`).
 5. Figure file names keep the pipeline's internal names; the mapping to thesis figure numbers is in Section 4 above.
+6. **Anonymity metrics.** k-anonymity is reported at two units of analysis over the quasi-identifiers role x
+   department-risk tier: user-level k (distinct users per group; 12-18 across seeds; the primary measure) and
+   record-level k (user-day records per group; 1,123-1,684). l-diversity (l = 1) is computed for `is_malicious`.
 
-## 6. Verified run (raw outputs)
+## 6. Verified run included in this package
 
-The raw outputs are attached to the GitHub release `v1.0-thesis` as `ppuba_outputs_v1.0.zip`; unzip it inside this folder to obtain `outputs/`. They are the raw output of a clean run from scratch (scripts 00-09 and 08 with seeds 42-44, scales 1 and 3) with the
+`outputs/` is the raw output of a clean run from scratch (scripts 00-09 and 08 with seeds 42-44, scales 1 and 3) with the
 pinned versions in `requirements.txt` (run on Python 3.13; the thesis values were first produced on Python 3.12.3 with
 identical results). `outputs/verify_thesis_values_report.txt` shows that all 183 checked values match Chapter 5 and
 Appendix C; `outputs/verification_dp_accounting.txt` is the output of the DP-accounting check (Table D.2).
 The intermediate corpora in `data/` (about 120 MB) are not included; scripts 01-02 regenerate them deterministically
-from the seeds. `outputs/SHA256SUMS.txt` lists checksums of every output file (run `sha256sum -c outputs/SHA256SUMS.txt` in this folder).
+from the seeds. `SHA256SUMS.txt` lists checksums of every file in the package (`sha256sum -c SHA256SUMS.txt`).
+
+**Independent re-verification (24 October 2026).** A clean re-run from the public release `v1.0-thesis`
+(commit 7cf843d) in a fresh environment (Python 3.13.17, pinned versions) reproduced all 183 table values and all 150
+text values; raw outputs are identical apart from timing fields and round-off <= 3e-10 in centralized-LR scores.
+See `verification/reverification_2026-10-24/COMPARISON_REPORT.md`.

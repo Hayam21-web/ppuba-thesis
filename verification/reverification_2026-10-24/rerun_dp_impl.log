@@ -1,0 +1,40 @@
+PASS  T1  eps=0.5: T=150, T*eps_step=0.5, T*delta_step=1e-05
+PASS  T2  eps=0.5: sigma=1037.4 (Table 4.4: 1037.4); SD=12.1572
+PASS  T2  eps=0.5: analytic-Gaussian delta(sigma) <= delta/T
+PASS  T1  eps=1.0: T=150, T*eps_step=1, T*delta_step=1e-05
+PASS  T2  eps=1.0: sigma=543.0 (Table 4.4: 543.0); SD=6.3629
+PASS  T2  eps=1.0: analytic-Gaussian delta(sigma) <= delta/T
+PASS  T1  eps=2.0: T=150, T*eps_step=2, T*delta_step=1e-05
+PASS  T2  eps=2.0: sigma=283.3 (Table 4.4: 283.3); SD=3.3197
+PASS  T2  eps=2.0: analytic-Gaussian delta(sigma) <= delta/T
+PASS  T1  eps=5.0: T=150, T*eps_step=5, T*delta_step=1e-05
+PASS  T2  eps=5.0: sigma=119.4 (Table 4.4: 119.4); SD=1.3990
+PASS  T2  eps=5.0: analytic-Gaussian delta(sigma) <= delta/T
+PASS  T1  eps=10.0: T=150, T*eps_step=10, T*delta_step=1e-05
+PASS  T2  eps=10.0: sigma=61.9 (Table 4.4: 61.9); SD=0.7259
+PASS  T2  eps=10.0: analytic-Gaussian delta(sigma) <= delta/T
+PASS  T1  eps=20.0: T=150, T*eps_step=20, T*delta_step=1e-05
+PASS  T2  eps=20.0: sigma=32.1 (Table 4.4: 32.1); SD=0.3761
+PASS  T2  eps=20.0: analytic-Gaussian delta(sigma) <= delta/T
+PASS  T3  noise draws = 450 (expected 150 per client x 3 clients = 450)
+PASS  T3  noise SD used = [1.399003598163] (expected 1.399004)
+PASS  T3  noise shape = {(21,)} (expected d+1 = 21: weights and bias)
+PASS  T4  batch size per local step: min 256, max 256 (expected 256); steps = 450
+PASS  T4  minibatches drawn without replacement
+PASS  T7  eps=inf: 0 noise draws, noise SD 0.0
+PASS  T7  all finite eps in the grid produce positive noise
+PASS  T5  replace-one: max ||delta mean clipped gradient|| = 0.021011 <= 2C/B = 0.023438
+PASS  T6  clipped gradient norm of an extreme positive record = 3.0000 <= C = 3.0 (would be up to 30C = 90.0 if the class weight were applied after clipping)
+
+27/27 implementation tests passed.
+Illustrative user-level epsilon (RDP, delta = 1e-5, worst case 150 records of one user per minibatch): {'0.5': 9.3, '1.0': 20.8, '2.0': 50.5, '5.0': 190.0, '10.0': 582.6, '20.0': 1914.1}
+Operations outside the DP mechanism:
+ - StandardScaler mean and SD are fitted centrally on all training records (ppuba_lib/data.py, preprocess) without noise.
+ - Pseudonymization, the identity-aware split, the role-based client assignment and the k-anonymity/l-diversity statistics are computed centrally on the pooled corpus before training.
+ - Minibatches are stratified by label (up to 16 positives per batch); the dependence of the batch on the data is covered by the replace-one sensitivity 2C/B (Table D.2, replace-one columns), not by the add/remove calibration C/B.
+ - FedAvg weights are proportional to the true client record counts (ns / ns.sum()), which are not privatized.
+ - The training-loss curve (Figure 5.4) is computed each round on all training records without noise; it is a diagnostic output and not part of the protected release.
+ - Decision thresholds are selected on the validation users, whose records are not protected by DP.
+ - Noise is drawn with NumPy's PCG64 generator in floating point; no cryptographically secure RNG or protection against floating-point attacks (e.g., Mironov, 2012) is implemented.
+ - The noise generator is seeded from the published experiment seed (seed * 7919 + int(100 eps)), so the noise is reproducible by anyone who knows the seed; this is required for reproducibility of the thesis but would remove the protection in a deployment, where the noise must come from a secret, non-reproducible source.
+ - Protection is record-level (one user-day); a user contributes about 150 records and has no user-level guarantee.
