@@ -1,4 +1,4 @@
-# PPUBA – reproducibility package (Supplementary Material S1, release v1.2-thesis)
+# PPUBA – reproducibility package (Supplementary Material S1, release v1.4-thesis)
 
 Code, configuration, random seeds and raw outputs for the MSc thesis
 *Privacy-Preserving AI for Cybersecurity: Evaluating Governance Compliance of User Behavior Analytics Systems in Saudi Arabia*
@@ -14,8 +14,7 @@ python verify_thesis_values.py           # compares outputs/ with the values pri
 pip install -r verification/requirements.txt
 python verification/dp_accounting_check.py                         # Table D.2: independent DP-accounting check
 python verification/dp_implementation_check.py                     # Table D.3: tests of the DP code in ppuba_lib/fl.py
-python verification/verify_extended_values.py                      # checks the values quoted in the thesis text (181 incl. Section 5.6)
-python 10_external_validation.py                                   # Section 5.6: ADFA-LD and Enron POI (needs external_data/, see Section 7)
+python verification/verify_extended_values.py                      # checks the 150 values quoted in the thesis text
 python verification/dp_empirical_audit.py                          # Table D.6: empirical privacy audit (~10 min)
 pip install -r verification/requirements_opacus.txt                # separate environment (PyTorch + Opacus)
 python verification/dp_opacus_crosscheck.py                        # Table D.5: cross-check of one DP step against Opacus
@@ -54,10 +53,9 @@ the same numbers. Newer library versions run, but Random Forest values change sl
 | `verification/dp_implementation_check.py` | 27 software tests of the DP implementation against Table 3.4 (Table D.3); lists the operations outside the DP mechanism; not a formal audit |
 | `verification/verify_extended_values.py` | comparison of the outputs with the 150 further values quoted in the running text (Chapters 1, 3-7, Appendices B-C) |
 | `verification/reverification_2026-10-24/` | logs and comparison report of the independent clean re-run from release v1.0-thesis (Table D.4) |
-| `10_external_validation.py` | external validation on ADFA-LD (full pipeline) and the Enron persons-of-interest data (centralized detectors), Section 5.6 |
 | `verification/dp_opacus_crosscheck.py` | cross-check of one local DP step against Opacus 1.5.2 (Table D.5) |
 | `verification/dp_empirical_audit.py` | canary-based empirical privacy audit of the DP training step (Table D.6); raw statistics in `verification/audit_stats/` |
-| `verification/reverification_2026-10-25/` | logs of the v1.2 verification run (`SUMMARY.md`) |
+| `verification/reverification_2026-10-28/` | logs of the clean re-run of this release v1.4-thesis (`SUMMARY.md`) |
 
 ## 4. Thesis item -> raw output (Table D.1)
 
@@ -80,7 +78,6 @@ the same numbers. Newer library versions run, but Random Forest values change sl
 | Table D.2 | `verification/dpcheck.json` |
 | Table D.3 | `verification/dp_implementation_check.json` |
 | Table D.4 | `verification/reverification_2026-10-24/COMPARISON_REPORT.md` |
-| Section 5.6, Tables 5.5-5.6 | `tables/EXT_detection_performance.csv`, `tables/EXT_adfa_privacy_utility.csv`, `tables/EXT_adfa_mia_centralized.csv`, `tables/EXT_partitions.csv` |
 | Table D.5 | `verification/dp_opacus_crosscheck.json` |
 | Table D.6 | `verification/dp_empirical_audit.json` |
 | Everything in one workbook | `ALL_RESULTS.xlsx` |
@@ -122,16 +119,14 @@ from the seeds. `SHA256SUMS.txt` lists checksums of every file in the package (`
 text values; raw outputs are identical apart from timing fields and round-off <= 3e-10 in centralized-LR scores.
 See `verification/reverification_2026-10-24/COMPARISON_REPORT.md`.
 
-## 7. External data for script 10 (not redistributed)
+## 7. Releases and correspondence with the thesis
 
-Place the two public files in `external_data/` before running `10_external_validation.py`:
-
-| File | Source | SHA-256 |
+| Tag | Content | Status |
 |---|---|---|
-| `external_data/ADFA-LD.zip` | https://github.com/verazuo/a-labelled-version-of-the-ADFA-LD-dataset (ADFA-LD, Creech & Hu, 2014) | `58d625470749344843a7f730b0875ce9b8769f6fa48f18dc4a92bd07c342ead5` |
-| `external_data/final_project_dataset.pkl` | https://github.com/udacity/ud120-projects (`final_project/`; Enron persons-of-interest data) | `da4440bbae952d8acfa569cb786289737bb8a0ef27d333bd13275fe8fb4d6ed8` |
+| `v1.0-thesis` (commit 7cf843d) | pipeline (scripts 00-09, `ppuba_lib/`, `config.py`) that produced every value in Chapter 5 and Appendices B-C; raw outputs attached as `ppuba_outputs_v1.0.zip` (SHA-256 `8ae804273e0012a6db5007acac11c1b36eed538a25b1eb072fa90f82316bf853`) | results version |
+| `v1.1-thesis`, `v1.2-thesis`, `v1.3-thesis` | intermediate verification releases; v1.2/v1.3 also contained an exploratory external validation (ADFA-LD, Enron) that is **not part of the final thesis** (moved to future work, Section 7.4) | superseded |
+| `v1.4-thesis` | this release: the v1.0 pipeline **unchanged** plus the verification scripts and logs cited in Appendix D (Tables D.2-D.6); exploratory script 10 removed | release that corresponds to the submitted thesis |
 
-The script uses config.py unchanged. ADFA-LD: 20 features (19 system-call frequencies + log length), group-aware 60/15/25
-split by attack run, full pipeline including FedAvg + DP and membership inference (1,000 member / 1,000 non-member traces).
-Enron: 144 persons, 18 POI, 10 label-independent features; the POI-interaction counts are excluded because they are derived
-from the labels; FedAvg + DP is not run because each client would hold fewer records than one minibatch (B = 256).
+The pipeline files are byte-identical to `v1.0-thesis` (`git diff v1.0-thesis v1.4-thesis -- 0*.py ppuba_lib config.py requirements.txt run_all.py verify_thesis_values.py` is empty).
+`SHA256SUMS.txt` at the package root lists the checksum of every file in this release (`sha256sum -c SHA256SUMS.txt`);
+`outputs/SHA256SUMS.txt` inside `ppuba_outputs_v1.0.zip` lists the checksums of the raw outputs.
