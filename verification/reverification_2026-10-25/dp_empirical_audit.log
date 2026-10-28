@@ -1,7 +1,0 @@
-    one step calibrated to eps=0.5: sigma=     7.03  shift=2.001 C/B  sd=    7.04  eps_lb= 0.578  theory add/remove= 0.500 replace-one= 1.067  OK
-      one step calibrated to eps=1: sigma=     3.73  shift=1.990 C/B  sd=    3.72  eps_lb= 1.336  theory add/remove= 1.000 replace-one= 2.155  OK
-      one step calibrated to eps=2: sigma=     1.99  shift=2.001 C/B  sd=    2.00  eps_lb= 3.034  theory add/remove= 2.000 replace-one= 4.393  OK
-      one step calibrated to eps=4: sigma=     1.08  shift=1.998 C/B  sd=    1.08  eps_lb= 4.953  theory add/remove= 4.000 replace-one= 9.085  OK
-      thesis step (nominal eps=20): sigma=    32.09  shift=1.985 C/B  sd=   32.09  eps_lb= 0.085  theory add/remove= 0.133 replace-one= 0.277  OK
-       thesis step (nominal eps=5): sigma=   119.38  shift=2.652 C/B  sd=  119.46  eps_lb= 0.025  theory add/remove= 0.033 replace-one= 0.069  OK
-ALL CONSISTENT
