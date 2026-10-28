@@ -1,0 +1,84 @@
+
+=== 00_calibrate_intensity.py ===
+[00] scale 1.0: median primary-feature AUC = 0.914 (min 0.770)
+[00] scale 1.5: median primary-feature AUC = 0.960 (min 0.847)
+[00] scale 2.0: median primary-feature AUC = 0.979 (min 0.898)
+[00] scale 2.5: median primary-feature AUC = 0.992 (min 0.930)
+[00] scale 3.0: median primary-feature AUC = 0.996 (min 0.957)
+[00] scale 4.0: median primary-feature AUC = 1.000 (min 0.983)
+[00] scale 5.0: median primary-feature AUC = 1.000 (min 0.993)
+[00] chosen INTENSITY_SCALE = 1.0 | target met: True
+
+=== 01_generate_corpus.py ===
+[01] seed 42: 60000 records, 10 malicious users, 124 positive user-days
+[01] seed 43: 60000 records, 10 malicious users, 133 positive user-days
+[01] seed 44: 60000 records, 10 malicious users, 143 positive user-days
+[01] seed 45: 60000 records, 10 malicious users, 130 positive user-days
+[01] seed 46: 60000 records, 10 malicious users, 135 positive user-days
+
+=== 02_preprocess_split.py ===
+[02] seed 42: {'train': {'users': 240, 'records': 36000, 'positives': 73, 'malicious_users': 6}, 'val': {'users': 60, 'records': 9000, 'positives': 23, 'malicious_users': 2}, 'test': {'users': 100, 'records': 15000, 'positives': 28, 'malicious_users': 2}} k(records)= 1684 l= 1
+[02] seed 43: {'train': {'users': 240, 'records': 36000, 'positives': 69, 'malicious_users': 6}, 'val': {'users': 60, 'records': 9000, 'positives': 27, 'malicious_users': 2}, 'test': {'users': 100, 'records': 15000, 'positives': 37, 'malicious_users': 2}} k(records)= 1238 l= 1
+[02] seed 44: {'train': {'users': 240, 'records': 36000, 'positives': 85, 'malicious_users': 6}, 'val': {'users': 60, 'records': 9000, 'positives': 32, 'malicious_users': 2}, 'test': {'users': 100, 'records': 15000, 'positives': 26, 'malicious_users': 2}} k(records)= 1123 l= 1
+[02] seed 45: {'train': {'users': 240, 'records': 36000, 'positives': 85, 'malicious_users': 6}, 'val': {'users': 60, 'records': 9000, 'positives': 25, 'malicious_users': 2}, 'test': {'users': 100, 'records': 15000, 'positives': 20, 'malicious_users': 2}} k(records)= 1613 l= 1
+[02] seed 46: {'train': {'users': 240, 'records': 36000, 'positives': 79, 'malicious_users': 6}, 'val': {'users': 60, 'records': 9000, 'positives': 29, 'malicious_users': 2}, 'test': {'users': 100, 'records': 15000, 'positives': 27, 'malicious_users': 2}} k(records)= 1569 l= 1
+
+=== 03_baselines.py ===
+[03] seed 42: {'Isolation Forest': 0.08, 'Random Forest': 0.0, 'Deep Autoencoder': 0.237, 'Centralized LR': 0.162} (18s)
+[03] seed 43: {'Isolation Forest': 0.158, 'Random Forest': 0.0, 'Deep Autoencoder': 0.267, 'Centralized LR': 0.0} (14s)
+[03] seed 44: {'Isolation Forest': 0.095, 'Random Forest': 0.0, 'Deep Autoencoder': 0.182, 'Centralized LR': 0.213} (11s)
+[03] seed 45: {'Isolation Forest': 0.087, 'Random Forest': 0.0, 'Deep Autoencoder': 0.033, 'Centralized LR': 0.0} (14s)
+[03] seed 46: {'Isolation Forest': 0.092, 'Random Forest': 0.004, 'Deep Autoencoder': 0.215, 'Centralized LR': 0.0} (14s)
+
+=== 04_federated_dp.py ===
+[04] seed 42: F1 by eps = {'0.5': 0.004, '1.0': 0.19, '2.0': 0.0, '5.0': 0.017, '10.0': 0.028, '20.0': 0.004, 'inf': 0.195} (7s)
+[04] seed 43: F1 by eps = {'0.5': 0.0, '1.0': 0.042, '2.0': 0.058, '5.0': 0.0, '10.0': 0.045, '20.0': 0.0, 'inf': 0.0} (6s)
+[04] seed 44: F1 by eps = {'0.5': 0.062, '1.0': 0.0, '2.0': 0.004, '5.0': 0.059, '10.0': 0.067, '20.0': 0.162, 'inf': 0.147} (7s)
+[04] seed 45: F1 by eps = {'0.5': 0.0, '1.0': 0.0, '2.0': 0.003, '5.0': 0.0, '10.0': 0.0, '20.0': 0.0, 'inf': 0.0} (7s)
+[04] seed 46: F1 by eps = {'0.5': 0.003, '1.0': 0.0, '2.0': 0.029, '5.0': 0.0, '10.0': 0.004, '20.0': 0.0, 'inf': 0.0} (8s)
+
+=== 05_audit_shap_mia_leakage.py ===
+[05] seed 42: MIA(eps=5)=0.485  top SHAP=['dept_risk_score', 'email_sent_count', 'session_duration_min']
+[05] seed 43: MIA(eps=5)=0.501  top SHAP=['dept_risk_score', 'sensitive_file_access', 'file_access_count']
+[05] seed 44: MIA(eps=5)=0.527  top SHAP=['dept_risk_score', 'session_duration_min', 'sensitive_file_access']
+[05] seed 45: MIA(eps=5)=0.500  top SHAP=['dept_risk_score', 'sensitive_file_access', 'file_access_count']
+[05] seed 46: MIA(eps=5)=0.511  top SHAP=['dept_risk_score', 'file_access_count', 'session_duration_min']
+
+=== 06_governance_report.py ===
+[06] overall index = 85.38 | source: researcher-assigned control totals (Table 5.3c); criterion scores not supplied | reproducible: True
+
+=== 07_aggregate_tables_figures.py ===
+/home/claude/run/pkg/07_aggregate_tables_figures.py:14: RuntimeWarning: Mean of empty slice
+  v = np.asarray(v, float); return f"{np.nanmean(v):.{nd}f} ± {np.nanstd(v, ddof=1) if len(v) > 1 else 0:.{nd}f}"
+/home/claude/run/venv/lib/python3.13/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+[07] wrote 28 tables, figures and RESULTS_REPORT.md to /home/claude/run/pkg/outputs
+
+=== 09_weight_sensitivity_paired.py ===
+[09] Table 5.4 (unweighted index = 85.4)
+                                                     Perturbation Governance-readiness index (worst-case range or distribution)
+                                Implementation completeness x 0.5                                                   82.8 - 91.4
+                                Implementation completeness x 1.5                                                   80.9 - 87.3
+                                      Evidence availability x 0.5                                                   83.3 - 91.6
+                                      Evidence availability x 1.5                                                   80.6 - 87.0
+                                               Auditability x 0.5                                                   83.8 - 91.4
+                                               Auditability x 1.5                                                   80.5 - 86.7
+                                        Regulatory coverage x 0.5                                                   84.2 - 90.5
+                                        Regulatory coverage x 1.5                                                   80.9 - 86.4
+                              Privacy-control effectiveness x 0.5                                                   84.6 - 89.3
+                              Privacy-control effectiveness x 1.5                                                   81.8 - 86.1
+Control-aggregation weights ~ Dirichlet(alpha = 1), 100,000 draws   median 85.4; 95% interval 80.8 - 89.7; 99.0% of draws >= 80
+Control-aggregation weights ~ Dirichlet(alpha = 5), 100,000 draws  median 85.4; 95% interval 83.3 - 87.4; 100.0% of draws >= 80
+
+[09] Table C.2
+                             Seed    IF    RF                     DAE    LR eps = inf               eps = 0.5                 eps = 1                 eps = 2                 eps = 5                eps = 10                eps = 20                     note
+                               42 0.080 0.000                   0.237 0.162     0.195                   0.004                   0.190                   0.000                   0.017                   0.028                   0.004                         
+                               43 0.158 0.000                   0.267 0.000     0.000                   0.000                   0.042                   0.058                   0.000                   0.045                   0.000                         
+                               44 0.095 0.000                   0.182 0.213     0.147                   0.062                   0.000                   0.004                   0.059                   0.067                   0.162                         
+                               45 0.087 0.000                   0.033 0.000     0.000                   0.000                   0.000                   0.003                   0.000                   0.000                   0.000                         
+                               46 0.092 0.004                   0.215 0.000     0.000                   0.003                   0.000                   0.029                   0.000                   0.004                   0.000                         
+                             Mean 0.102 0.001                   0.187 0.075     0.068                   0.014                   0.046                   0.019                   0.015                   0.029                   0.033                         
+Paired diff vs eps = inf [95% CI]     -     -                       -     -         - -0.055 [-0.131, +0.001] -0.022 [-0.088, +0.024] -0.050 [-0.140, +0.035] -0.053 [-0.124, +0.000] -0.040 [-0.115, +0.019] -0.035 [-0.115, +0.009]                         
+    Paired diff DAE - IF [95% CI]             +0.084 [+0.014, +0.136]                                                                                                                                                                 DAE > IF in 4 of 5 seeds
+
+Done in 374s. Results: outputs/ (ALL_RESULTS.xlsx, tables/, figures/, RESULTS_REPORT.md)

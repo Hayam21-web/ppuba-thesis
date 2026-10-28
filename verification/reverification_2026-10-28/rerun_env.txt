@@ -1,0 +1,13 @@
+Clean re-run started: 2026-10-28T21:46:37+03:00
+Python 3.13.18
+dp-accounting==0.6.0
+matplotlib==3.10.8
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+scipy==1.17.1
+seaborn==0.13.2
+shap==0.53.0
+data/ and outputs/ present before run: 0
+finished 2026-10-28T22:04:56+03:00
+Opacus environment: Python 3.12.3; numpy==1.26.4 opacus==1.5.2 scipy==1.14.1 torch==2.5.1 

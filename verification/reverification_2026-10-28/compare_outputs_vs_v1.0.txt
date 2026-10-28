@@ -1,0 +1,68 @@
+ALL_RESULTS.xlsx ('binary differs (e.g. xlsx metadata)',)
+figures/fig4_3_control_effectiveness.png ('png', 'pixel-identical')
+figures/fig5_1_roc_baselines.png ('png', 'pixel-identical')
+figures/fig5_2_confusion_matrices.png ('png', 'pixel-identical')
+figures/fig5_3_privacy_utility.png ('png', 'pixel-identical')
+figures/fig5_3b_loss_convergence.png ('png', 'pixel-identical')
+figures/fig5_4_mia_vs_epsilon.png ('png', 'pixel-identical')
+figures/fig5_5_shap_beeswarm.png ('png', 'pixels differ: 90829')
+figures/fig5_5b_shap_bar.png ('png', 'pixel-identical')
+figures/fig5_6_governance_scores.png ('png', 'pixel-identical')
+per_seed/audit_seed_42.json ('json', [('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/inference_seconds_test', 0.011211435000120673), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/throughput_records_per_s', 5990.490970782557), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/latency_ms_per_record'
+per_seed/audit_seed_43.json ('json', [('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/inference_seconds_test', 0.03836437899997236), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/throughput_records_per_s', 20326.088477621), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/latency_ms_per_record', 0
+per_seed/audit_seed_44.json ('json', [('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/inference_seconds_test', 0.013356772000065575), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/throughput_records_per_s', 5312.540642951659), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/latency_ms_per_record'
+per_seed/audit_seed_45.json ('json', [('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/inference_seconds_test', 0.01332821200003309), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/throughput_records_per_s', 6216.40016031987), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/latency_ms_per_record', 
+per_seed/audit_seed_46.json ('json', [('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/inference_seconds_test', 0.010522884000067734), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/throughput_records_per_s', 5269.637772743328), ('/leakage/iii_ablation_without_sensitive_file_access_and_dept_risk_score/Isolation Forest/latency_ms_per_record'
+per_seed/baselines_seed_42.json ('json', [('/metrics/Isolation Forest/inference_seconds_test', 0.062273534999974345), ('/metrics/Isolation Forest/throughput_records_per_s', 24135.06110440722), ('/metrics/Isolation Forest/latency_ms_per_record', 0.00415156899999829), ('/metrics/Random Forest/inference_seconds_test', 0.02062480600002914), ('/metrics/Random Forest/throughput_records_per_s', 10783.07146218323), ('/metrics/Random For
+per_seed/baselines_seed_43.json ('json', [('/metrics/Isolation Forest/inference_seconds_test', 0.030499656000017694), ('/metrics/Isolation Forest/throughput_records_per_s', 13816.491063301248), ('/metrics/Isolation Forest/latency_ms_per_record', 0.0020333104000011797), ('/metrics/Random Forest/inference_seconds_test', 0.0022717860000227574), ('/metrics/Random Forest/throughput_records_per_s', 1170.8022268551285), ('/metrics/Rand
+per_seed/baselines_seed_44.json ('json', [('/metrics/Isolation Forest/inference_seconds_test', 0.01280313600003069), ('/metrics/Isolation Forest/throughput_records_per_s', 5115.952902408913), ('/metrics/Isolation Forest/latency_ms_per_record', 0.0008535424000020476), ('/metrics/Random Forest/inference_seconds_test', 0.010801707000013039), ('/metrics/Random Forest/throughput_records_per_s', 5989.2754065319605), ('/metrics/Random 
+per_seed/baselines_seed_45.json ('json', [('/metrics/Isolation Forest/inference_seconds_test', 0.042309935000048426), ('/metrics/Isolation Forest/throughput_records_per_s', 20667.373508379955), ('/metrics/Isolation Forest/latency_ms_per_record', 0.0028206623333365613), ('/metrics/Random Forest/inference_seconds_test', 0.0009869840000078511), ('/metrics/Random Forest/throughput_records_per_s', 520.619106516504), ('/metrics/Random
+per_seed/baselines_seed_46.json ('json', [('/metrics/Isolation Forest/inference_seconds_test', 0.04827882199998612), ('/metrics/Isolation Forest/throughput_records_per_s', 18167.588796412936), ('/metrics/Isolation Forest/latency_ms_per_record', 0.0032185881333324073), ('/metrics/Random Forest/inference_seconds_test', 0.04641789700002619), ('/metrics/Random Forest/throughput_records_per_s', 16653.195665533545), ('/metrics/Random 
+per_seed/error_cases_baselines_seed_42.csv ('csv', [('score', 1.2745360322696797e-13)])
+per_seed/error_cases_baselines_seed_43.csv ('csv', [('score', 8.498757253505573e-14)])
+per_seed/error_cases_baselines_seed_44.csv ('csv', [('score', 1.3805623311213822e-12)])
+per_seed/error_cases_baselines_seed_45.csv ('csv', [('score', 2.632670748070609e-10)])
+per_seed/error_cases_baselines_seed_46.csv ('csv', [('score', 5.459521723594207e-14)])
+per_seed/fl_seed_42.json ('json', [('/metrics/0.5/train_seconds', 0.5523593425750732), ('/metrics/0.5/seconds_per_round', 0.011047186851501467), ('/metrics/1.0/train_seconds', 0.5673820972442627), ('/metrics/1.0/seconds_per_round', 0.011347641944885252), ('/metrics/2.0/train_seconds', 0.6450347900390625), ('/metrics/2.0/seconds_per_round', 0.01290069580078125), ('/metrics/5.0/train_seconds', 0.48540496826171875), ('/metri
+per_seed/fl_seed_43.json ('json', [('/metrics/0.5/train_seconds', 0.5502967834472656), ('/metrics/0.5/seconds_per_round', 0.011005935668945314), ('/metrics/1.0/train_seconds', 0.5652949810028076), ('/metrics/1.0/seconds_per_round', 0.01130589962005615), ('/metrics/2.0/train_seconds', 0.5502371788024902), ('/metrics/2.0/seconds_per_round', 0.011004743576049806), ('/metrics/5.0/train_seconds', 0.5177352428436279), ('/metric
+per_seed/fl_seed_44.json ('json', [('/metrics/0.5/train_seconds', 0.5815105438232422), ('/metrics/0.5/seconds_per_round', 0.011630210876464844), ('/metrics/1.0/train_seconds', 0.49025535583496094), ('/metrics/1.0/seconds_per_round', 0.00980510711669922), ('/metrics/2.0/train_seconds', 0.5007965564727783), ('/metrics/2.0/seconds_per_round', 0.010015931129455565), ('/metrics/5.0/train_seconds', 0.48911118507385254), ('/metr
+per_seed/fl_seed_45.json ('json', [('/metrics/0.5/train_seconds', 0.641230583190918), ('/metrics/0.5/seconds_per_round', 0.01282461166381836), ('/metrics/1.0/train_seconds', 0.6067867279052734), ('/metrics/1.0/seconds_per_round', 0.012135734558105469), ('/metrics/2.0/train_seconds', 0.58742356300354), ('/metrics/2.0/seconds_per_round', 0.011748471260070802), ('/metrics/5.0/train_seconds', 0.48333120346069336), ('/metrics/
+per_seed/fl_seed_46.json ('json', [('/metrics/0.5/train_seconds', 0.5879383087158203), ('/metrics/0.5/seconds_per_round', 0.011758766174316405), ('/metrics/1.0/train_seconds', 0.4117155075073242), ('/metrics/1.0/seconds_per_round', 0.008234310150146484), ('/metrics/2.0/train_seconds', 0.5602025985717773), ('/metrics/2.0/seconds_per_round', 0.011204051971435548), ('/metrics/5.0/train_seconds', 0.5052499771118164), ('/metri
+per_seed/scores_baselines_seed_42.npz ('npz', [('Random Forest__val', 5.551115123125783e-17), ('Random Forest__test', 5.551115123125783e-17), ('Centralized LR__val', 1.6997514507011147e-13), ('Centralized LR__test', 1.7130741269966165e-13)])
+per_seed/scores_baselines_seed_43.npz ('npz', [('Random Forest__val', 1.1102230246251565e-16), ('Random Forest__test', 2.7755575615628914e-17), ('Centralized LR__val', 3.170796958329447e-13), ('Centralized LR__test', 2.5768276401549883e-13)])
+per_seed/scores_baselines_seed_44.npz ('npz', [('Random Forest__val', 8.326672684688674e-17), ('Random Forest__test', 5.551115123125783e-17), ('Centralized LR__val', 1.159183860011126e-12), ('Centralized LR__test', 1.460387366591931e-12)])
+per_seed/scores_baselines_seed_45.npz ('npz', [('Random Forest__val', 5.551115123125783e-17), ('Random Forest__test', 4.163336342344337e-17), ('Centralized LR__val', 3.085135480418444e-10), ('Centralized LR__test', 3.087082256492124e-10)])
+per_seed/scores_baselines_seed_46.npz ('npz', [('Random Forest__val', 1.1102230246251565e-16), ('Random Forest__test', 1.1102230246251565e-16), ('Centralized LR__val', 1.8035573035035668e-13), ('Centralized LR__test', 1.844080443902385e-13)])
+run_08_sensitivity.log ('absent in re-run (log/report file)',)
+run_all.log ('absent in re-run (log/report file)',)
+run_config.json ('json', [('/config/BASE_DIR', 'value'), ('/config/DATA_DIR', 'value'), ('/config/OUT_DIR', 'value'), ('/config/FIG_DIR', 'value'), ('/config/TAB_DIR', 'value'), ('/config/SEED_DIR', 'value'), ('/versions/python', 'value')])
+tables/AppendixC_all_error_cases_FP_FN.csv ('csv', [('score', 2.632670748070609e-10)])
+tables/T3_7_latency_throughput.csv ('csv', [('latency ms/record', 'text'), ('throughput records/s', 'text')])
+tables/T3_7_scalability_clients.csv ('csv', [('sec/round', 'text')])
+tables/T3_7_threshold_consistency.csv ('csv', [('threshold mean', 1.3376300067591274e-11), ('threshold SD', 2.4869495351964588e-11), ('threshold CV', 3.8814090830285863e-11)])
+tables/T4_5_implementation_config.csv ('csv', [('Value', 'text')])
+tables/T5_3a_per_seed.csv ('csv', [('threshold', 6.680556108307201e-11)])
+verification_dp_accounting.txt ('absent in re-run (log/report file)',)
+verify_thesis_values_report.txt ('absent in re-run (log/report file)',)
+identical files: 54 of 100
+---- non-timing JSON differences / max numeric deltas
+per_seed/audit_seed_42.json non-timing diffs: 2 max 8.37108160567368e-14 []
+per_seed/audit_seed_43.json non-timing diffs: 3 max 7.55506768257419e-13 []
+per_seed/audit_seed_44.json non-timing diffs: 2 max 5.67323965583455e-14 []
+per_seed/audit_seed_45.json non-timing diffs: 2 max 4.904410211281629e-13 []
+per_seed/audit_seed_46.json non-timing diffs: 2 max 2.0889956431346945e-12 []
+per_seed/baselines_seed_42.json non-timing diffs: 1 max 8.537615059367454e-14 []
+per_seed/baselines_seed_43.json non-timing diffs: 1 max 3.9968028886505635e-14 []
+per_seed/baselines_seed_44.json non-timing diffs: 1 max 2.4868995751603507e-14 []
+per_seed/baselines_seed_45.json non-timing diffs: 1 max 6.680561659422324e-11 []
+per_seed/baselines_seed_46.json non-timing diffs: 1 max 2.4646951146678475e-14 []
+per_seed/fl_seed_42.json non-timing diffs: 0 max 0 []
+per_seed/fl_seed_43.json non-timing diffs: 0 max 0 []
+per_seed/fl_seed_44.json non-timing diffs: 0 max 0 []
+per_seed/fl_seed_45.json non-timing diffs: 0 max 0 []
+per_seed/fl_seed_46.json non-timing diffs: 0 max 0 []
+run_config.json non-timing diffs: 7 max 0 [('/config/BASE_DIR', 'value'), ('/config/DATA_DIR', 'value'), ('/config/OUT_DIR', 'value'), ('/config/FIG_DIR', 'value'), ('/config/TAB_DIR', 'value'), ('/config/SEED_DIR', 'value'), ('/versions/python', 'value')]
+                Item  ...                                                new
+9  Software versions  ...  {'python': '3.13.18', 'numpy': '2.4.4', 'panda...
+
+[1 rows x 3 columns]

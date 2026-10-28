@@ -1,0 +1,8 @@
+  eps  sigma rep  sigma new  noise SD     RDP     PLD  RDP(r1)  PLD(r1)
+  0.5    1,037.4    1,037.4     12.16   0.037   0.033    0.080    0.070
+    1      543.0      543.0      6.36   0.077   0.067    0.167    0.143
+    2      283.3      283.3      3.32   0.162   0.137    0.321    0.291
+    5      119.4      119.4      1.40   0.386   0.350    0.817    0.746
+   10       61.9       61.9      0.73   0.785   0.716    1.672    1.535
+   20       32.1       32.1      0.38   1.608   1.476    3.476    3.210
+All noise multipliers reproduced; all accountant values below the nominal budgets.
